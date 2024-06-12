@@ -20,6 +20,7 @@
         <ComboBox Name="MedienTypComboBox" Margin="10,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" SelectionChanged="MedienTypComboBox_SelectionChanged">
             <ComboBoxItem Content="Buch" />
             <ComboBoxItem Content="Zeitschrift" />
+            <ComboBoxItem Content="(none)" />
         </ComboBox>
 
         <TextBlock Name="ZusatzTextBlockIsbn" Visibility="Collapsed" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>

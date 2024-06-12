@@ -45,17 +45,42 @@ namespace BibliothekWPF
                 ZusatzTextBlockVerlag.Visibility = Visibility.Visible;
                 ZusatzTextBoxVerlag.Visibility = Visibility.Visible;
             }
+            else if (MedienTypComboBox.SelectedIndex == 2)
+            {
+                ZusatzTextBlockAusgabe.Visibility = Visibility.Collapsed;
+                ZusatzTextBoxAusgabe.Visibility = Visibility.Collapsed;
+                ZusatzTextBlockVerlag.Visibility = Visibility.Collapsed;
+                ZusatzTextBoxVerlag.Visibility = Visibility.Collapsed;
+                ZusatzTextBlockIsbn.Visibility = Visibility.Collapsed;
+                ZusatzTextBoxIsbn.Visibility = Visibility.Collapsed;
+                ZusatzTextBlockGenre.Visibility = Visibility.Collapsed;
+                ZusatzTextBoxGenre.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void HinzufuegenButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TitelTextBox.Text) ||
+                string.IsNullOrWhiteSpace(AutorTextBox.Text) ||
+                !int.TryParse(ErscheinungsjahrTextBox.Text, out int erscheinungsjahr))
+            {
+                MessageBox.Show("Bitte füllen Sie alle Felder korrekt aus.", "Ungültige Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string titel = TitelTextBox.Text;
             string autor = AutorTextBox.Text;
-            int erscheinungsjahr = int.Parse(ErscheinungsjahrTextBox.Text);
 
             // Buch
             if (MedienTypComboBox.SelectedIndex == 0)
             {
+                if (string.IsNullOrWhiteSpace(ZusatzTextBoxIsbn.Text) ||
+                    string.IsNullOrWhiteSpace(ZusatzTextBoxGenre.Text))
+                {
+                    MessageBox.Show("Bitte füllen Sie alle Felder für das Buch aus.", "Ungültige Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 string isbn = ZusatzTextBoxIsbn.Text;
                 string genre = ZusatzTextBoxGenre.Text;
 
@@ -77,7 +102,7 @@ namespace BibliothekWPF
                 ZusatzTextBlockGenre.Visibility = Visibility.Collapsed;
                 ZusatzTextBoxGenre.Visibility = Visibility.Collapsed;
 
-                // ComboBox auf standard
+                // ComboBox auf standard (funktioniert nicht)
                 EntfernenComboBox.Text = "";
                 EntfernenComboBox.SelectedIndex = -1;
             }
@@ -85,7 +110,13 @@ namespace BibliothekWPF
             // Zeitschrift
             else if (MedienTypComboBox.SelectedIndex == 1)
             {
-                int ausgabe = int.Parse(ZusatzTextBoxGenre.Text);
+                if (!int.TryParse(ZusatzTextBoxAusgabe.Text, out int ausgabe) ||
+                    string.IsNullOrWhiteSpace(ZusatzTextBoxVerlag.Text))
+                {
+                    MessageBox.Show("Bitte füllen Sie alle Felder für die Zeitschrift korrekt aus.", "Ungültige Eingabe", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 string verlag = ZusatzTextBoxVerlag.Text;
 
                 Zeitschrift zeitschrift = new Zeitschrift
@@ -106,7 +137,7 @@ namespace BibliothekWPF
                 ZusatzTextBlockVerlag.Visibility = Visibility.Collapsed;
                 ZusatzTextBoxVerlag.Visibility = Visibility.Collapsed;
 
-                // ComboBox auf standard
+                // ComboBox auf standard (funktioniert nicht)
                 EntfernenComboBox.Text = "";
                 EntfernenComboBox.SelectedIndex = -1;
 
