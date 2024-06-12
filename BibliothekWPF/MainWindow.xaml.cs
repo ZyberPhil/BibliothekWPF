@@ -55,6 +55,10 @@ namespace BibliothekWPF
                 ZusatzTextBoxIsbn.Visibility = Visibility.Collapsed;
                 ZusatzTextBlockGenre.Visibility = Visibility.Collapsed;
                 ZusatzTextBoxGenre.Visibility = Visibility.Collapsed;
+                // Felder clearen
+                TitelTextBox.Text = "";
+                AutorTextBox.Text = "";
+                ErscheinungsjahrTextBox.Text = "";
             }
         }
 
@@ -102,6 +106,11 @@ namespace BibliothekWPF
                 ZusatzTextBlockGenre.Visibility = Visibility.Collapsed;
                 ZusatzTextBoxGenre.Visibility = Visibility.Collapsed;
 
+                // Felder clearen
+                TitelTextBox.Text = "";
+                AutorTextBox.Text = "";
+                ErscheinungsjahrTextBox.Text = "";
+
                 // ComboBox auf standard (funktioniert nicht)
                 EntfernenComboBox.Text = "";
                 EntfernenComboBox.SelectedIndex = -1;
@@ -137,10 +146,19 @@ namespace BibliothekWPF
                 ZusatzTextBlockVerlag.Visibility = Visibility.Collapsed;
                 ZusatzTextBoxVerlag.Visibility = Visibility.Collapsed;
 
+                // Felder clearen
+                TitelTextBox.Text = "";
+                AutorTextBox.Text = "";
+                ErscheinungsjahrTextBox.Text = "";
+
                 // ComboBox auf standard (funktioniert nicht)
                 EntfernenComboBox.Text = "";
                 EntfernenComboBox.SelectedIndex = -1;
 
+            }
+            else if (MedienTypComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Bitte wählen sie eine Medium art aus!", "Fehlende Angaben", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
