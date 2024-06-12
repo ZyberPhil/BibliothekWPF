@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +14,35 @@ namespace BibliothekWPF
         {
             InitializeComponent();
             medienListe = new List<Medium>();
+            BücherCheckBox.Checked += FilterCheckBox_Checked;
+            BücherCheckBox.Unchecked += FilterCheckBox_Checked;
+            ZeitschriftenCheckBox.Checked += FilterCheckBox_Checked;
+            ZeitschriftenCheckBox.Unchecked += FilterCheckBox_Checked;
+        }
+
+        private void FilterCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            AktualisiereMedienListBox();
+        }
+
+        private void AktualisiereMedienListBox()
+        {
+            MedienListBox.Items.Clear();
+            IEnumerable<Medium> gefilterteMedien = medienListe;
+
+            if (BücherCheckBox.IsChecked == true && ZeitschriftenCheckBox.IsChecked == false)
+            {
+                gefilterteMedien = gefilterteMedien.OfType<Buch>();
+            }
+            else if (BücherCheckBox.IsChecked == false && ZeitschriftenCheckBox.IsChecked == true)
+            {
+                gefilterteMedien = gefilterteMedien.OfType<Zeitschrift>();
+            }
+
+            foreach (var medium in gefilterteMedien)
+            {
+                MedienListBox.Items.Add(medium.Anzeigen());
+            }
         }
 
         private void MedienTypComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -177,6 +207,11 @@ namespace BibliothekWPF
                     EntfernenComboBox.Items.Remove(selectedItem);
                 }
             }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

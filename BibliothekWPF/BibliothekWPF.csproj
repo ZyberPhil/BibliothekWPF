@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Black-White-Forest-1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Black-White-Forest-1.png" />
+  </ItemGroup>
+
 </Project>

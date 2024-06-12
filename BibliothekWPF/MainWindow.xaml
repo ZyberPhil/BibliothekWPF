@@ -7,40 +7,59 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="Titel:" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="TitelTextBox" Margin="10,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Black-White-Forest-1.png"/>
+        </Grid.Background>
+        <TextBlock Text="Titel:" Margin="32,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBox Name="TitelTextBox" Margin="32,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Background="#FFD6D6D6"/>
 
-        <TextBlock Text="Autor:" Margin="220,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="AutorTextBox" Margin="220,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBlock Text="Autor:" Margin="237,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox Name="AutorTextBox" Margin="237,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="183" Background="#FFD6D6D6"/>
 
-        <TextBlock Text="Erscheinungsjahr:" Margin="430,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="ErscheinungsjahrTextBox" Margin="430,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+        <TextBlock Text="Erscheinungsjahr:" Margin="425,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="Black"/>
+        <TextBox Name="ErscheinungsjahrTextBox" Margin="425,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="159" Background="#FFD6D6D6"/>
 
-        <TextBlock Text="Medien Typ:" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <ComboBox Name="MedienTypComboBox" Margin="10,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" SelectionChanged="MedienTypComboBox_SelectionChanged">
+        <TextBlock Text="Medien Typ:" Margin="32,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <ComboBox Name="MedienTypComboBox" Margin="32,81,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" SelectionChanged="MedienTypComboBox_SelectionChanged">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFD6D6D6" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
             <ComboBoxItem Content="Buch" />
             <ComboBoxItem Content="Zeitschrift" />
             <ComboBoxItem Content="(none)" />
         </ComboBox>
 
-        <TextBlock Name="ZusatzTextBlockIsbn" Visibility="Collapsed" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="ZusatzTextBoxIsbn" Visibility="Collapsed" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBlock Name="ZusatzTextBlockIsbn" Visibility="Collapsed" Margin="32,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBox Name="ZusatzTextBoxIsbn" Visibility="Collapsed" Margin="32,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-        <TextBlock Name="ZusatzTextBlockGenre" Visibility="Collapsed" Margin="220,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="ZusatzTextBoxGenre" Visibility="Collapsed" Margin="220,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBlock Name="ZusatzTextBlockGenre" Visibility="Collapsed" Margin="237,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBox Name="ZusatzTextBoxGenre" Visibility="Collapsed" Margin="237,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-        <TextBlock Name="ZusatzTextBlockAusgabe" Visibility="Collapsed" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="ZusatzTextBoxAusgabe" Visibility="Collapsed" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBlock Name="ZusatzTextBlockAusgabe" Visibility="Collapsed" Margin="32,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBox Name="ZusatzTextBoxAusgabe" Visibility="Collapsed" Margin="32,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-        <TextBlock Name="ZusatzTextBlockVerlag" Visibility="Collapsed" Margin="220,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox Name="ZusatzTextBoxVerlag" Visibility="Collapsed" Margin="220,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBlock Name="ZusatzTextBlockVerlag" Visibility="Collapsed" Margin="237,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBox Name="ZusatzTextBoxVerlag" Visibility="Collapsed" Margin="237,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-        <Button Content="Hinzufügen" Margin="668,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="HinzufuegenButton_Click"/>
+        <Button Content="Hinzufügen" Margin="560,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="HinzufuegenButton_Click"/>
 
-        <ListBox Name="MedienListBox" Margin="8,193,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="760" Height="155"/>
+        <ListBox Name="MedienListBox" Margin="0,193,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="736" Height="155" Background="#FFD6D6D6"/>
 
-        <TextBlock Text="Auswahl zu entfernendes Medium:" Margin="11,357,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <ComboBox Name="EntfernenComboBox" Margin="11,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400"/>
-        <Button Content="Entfernen" Margin="416,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="EntfernenButton_Click"/>
+        <TextBlock Text="Auswahl zu entfernendes Medium:" Margin="32,357,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <ComboBox Name="EntfernenComboBox" Margin="32,377,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="417">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFD6D6D6" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button Content="Entfernen" Margin="454,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="EntfernenButton_Click"/>
+        <Button Content="Exit" Margin="668,378,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="ExitButton_Click"/>
+        <CheckBox Content="Bücher" x:Name="BücherCheckBox" HorizontalAlignment="Left" Margin="32,173,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <CheckBox Content="Zeitschriften" x:Name="ZeitschriftenCheckBox" HorizontalAlignment="Left" Margin="123,173,0,0" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Window>
